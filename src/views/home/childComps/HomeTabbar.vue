@@ -30,8 +30,11 @@
 				this.$emit('showCart')
 			},
 			go() {
-				// console.log('go');
-				this.$router.push({ name: 'submitorder' })
+				if (this.cartlist.length == 0) {
+					this.$emit('toast')
+				} else {
+					this.$router.push({ name: 'submitorder' })
+				}
 			}
 		},
 		computed: {

@@ -1,9 +1,9 @@
 <template>
 	<div class="home" :class="{wrap:isSearch}">
-		<home-info @search="search()"></home-info>
+		<home-info @search="search()" @toOrderlist="toOrderlist()"></home-info>
 		<home-recommend :recommend="recommend"></home-recommend>
 		<goods-list :category="category" :goods="goods"></goods-list>
-		<home-tabbar @showCart="showCart()"></home-tabbar>
+		<home-tabbar @showCart="showCart()" @toast="toast()"></home-tabbar>
 
 		<van-overlay :show="show" @click.self="show = false" z-index="3" duration="0.1">
 			<home-cart-list></home-cart-list>
@@ -20,7 +20,7 @@
 	import HomeTabbar from './childComps/HomeTabbar.vue'
 	import HomeCartList from './childComps/HomeCartList.vue'
 	import { getRecommend, getGoods, getCategory } from '@/network/home.js'
-	import { Overlay, Popup } from 'vant';
+	import { Overlay, Popup, Toast } from 'vant';
 	import HomeSearch from './childComps/HomeSearch'
 	export default {
 		name: 'Home',
@@ -54,6 +54,13 @@
 			}
 		},
 		methods: {
+			toast() {
+				// console.log('Toast');
+				Toast('请选择商品')
+			},
+			toOrderlist() {
+				this.$router.push({ name: 'orderlist' })
+			},
 			search() {
 				this.isSearch = true
 			},
@@ -66,10 +73,12 @@
 
 					this.recommend = res.data.map(item => {
 						// console.log(item);
+						let baseURL = 'http://127.0.0.1:8000'
 						if (item.image) {
-							item.image = 'http://127.0.0.1:8000' + item.image
+							item.image = baseURL + item.image
 						} else {
-							item.image = '~assets/img/home/noPic.png'
+							let noPicURL = baseURL + '/static/order/nopic.png'
+							item.image = noPicURL
 						}
 						// console.log(item);
 						return item

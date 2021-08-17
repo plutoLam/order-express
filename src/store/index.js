@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
 	  TableNum:1,
     cartlist:[],
-    orderlist:[]
+    orderlist:[],
+    order:{}
   },
   mutations: {
 	  changeTableNum(state,num){
@@ -28,7 +29,7 @@ export default new Vuex.Store({
         state.cartlist.splice(state.cartlist.length,0,obj)
         // console.log("goodlist", state.cartlist);
       }
-        console.log('cart',state.cartlist);
+        // console.log('cart',state.cartlist);
     },
     cutCart(state,obj){
       // console.log('cut');
@@ -44,18 +45,22 @@ export default new Vuex.Store({
       // console.log('cart',state.cartlist);
     },
     deleteAll(state){
-      console.log('all');
+      // console.log('all');
       state.cartlist.splice(0,state.cartlist.length)
     },
-    over(state){
-      let obj={
-        isOver:true,
+    
+    over(state,bool){
+      let d = new Date()
+      state.order={
+        orderNum:d.getTime(),
+        isOver:bool,
         count:state.cartlist.length,
-        data:new Date(),
-        ALLMONEY:this.getters.ALLMONEY
+        data:d,
+        ALLMONEY:this.getters.ALLMONEY,
+        cartlist:state.cartlist,
       }
-      state.orderlist.splice(state.cartlist.length,1,obj)
-    }
+      state.orderlist.splice(state.orderlist.length,1,state.order)
+    },
   },
   getters:{
     ALLMONEY(state){

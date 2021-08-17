@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+// window.Promise = require('promise');
+import promise from 'es6-promise';
+	promise.polyfill();
 Vue.config.productionTip = false
 new Vue({
   store,

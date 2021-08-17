@@ -3,7 +3,8 @@
 		<nav-bar @back='back()'>
 			<div slot="title">订单列表</div>
 		</nav-bar>
-		<order-list-item v-for="(item, index) in orderlist" :orderItem="item" :key="index"></order-list-item>
+		<order-list-item v-for="(item, index) in orderlist" :orderItem="item" :key="index" @click.native="toOrder(item)">
+		</order-list-item>
 	</div>
 </template>
 
@@ -11,14 +12,53 @@
 	import NavBar from 'components/navBar/NavBar'
 	import OrderListItem from './childComps/OrderListItem'
 	import { mapState } from 'vuex'
+	import { getOrder, getCartlist } from '@/network/order.js'
 	export default {
 		name: 'OrderList',
+		data() {
+			return {
+				orderlist: []
+			}
+		},
 		components: {
 			NavBar,
 			OrderListItem
 		},
+		created() {
+			this.getOrderData()
+		},
+		methods: {
+			getOrderData() {
+				getOrder().then(res => {
+					console.log(res);
+					this.orderlist = res.data
+				})
+			},
+			back(item) {
+				this.$router.push({
+					name: 'home',
+					params: {
+						item
+					}
+				})
+			},
+			toOrder(item) {
+				// console.log('toor');
+				getCartlist(item.orderNum).then(res => {
+					item.cartlist = res.data.data
+					console.log('item', item);
+					this.$router.push({
+						name: 'orderdetail',
+						params: {
+							item
+						}
+					})
+				})
+
+			}
+		},
 		computed: {
-			...mapState(['orderlist'])
+			// ...mapState(['orderlist'])
 		}
 	}
 </script>

@@ -55,6 +55,7 @@
       toPay() {
         // console.log('topay');
         this.$router.push({ name: 'payorder' })
+        //此处把订单信息发给后端
       },
       back() {
         // console.log('back');
@@ -75,24 +76,6 @@
 
   .left {
     margin-top: .75rem;
-  }
-
-  .border {
-    margin: 0;
-    padding: 10px;
-    border-bottom: 15px solid #F2F2F2;
-    /* margin-bottom: 10px; */
-  }
-
-  .all {
-    position: absolute;
-    right: 10px;
-    line-height: 30px;
-  }
-
-  .price {
-    font-size: 18px;
-    font-weight: 700;
   }
 
   .remark {

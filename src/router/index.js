@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
+const routerPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error=> error)}
 const Index = () => import('views/index/Index')
 const Home = () => import('views/home/Home')
 const Submit = () => import('views/submit/Submit')
 const SubmitOrder = () => import('components/submit/SubmitOrder')
 const PayOrder = () => import('components/submit/PayOrder')
 const OrderList = () => import('views/orderList/OrderList')
+const OrderDetail = () => import('views/orderDetail/OrderDetail')
 
 Vue.use(VueRouter)
 
@@ -26,6 +30,11 @@ const routes = [{
 		name:'orderlist',
 		path: '/orderList',
 		component: OrderList
+	},
+  {
+		name:'orderdetail',
+		path: '/orderlist',
+		component: OrderDetail
 	},
 	{
 		path: '/submit',

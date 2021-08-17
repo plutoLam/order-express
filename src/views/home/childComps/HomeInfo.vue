@@ -6,7 +6,7 @@
 			<a href="#" class="search" @click="search()">
 				<img src="~assets/img/home/search.png">
 			</a>
-			<a href="#" class="order">
+			<a href="#" class="order" @click="toOrderlist()">
 				<img src="~assets/img/home/order.png">
 			</a>
 
@@ -31,6 +31,9 @@
 		methods: {
 			search() {
 				this.$emit('search')
+			},
+			toOrderlist() {
+				this.$emit('toOrderlist')
 			}
 		},
 
