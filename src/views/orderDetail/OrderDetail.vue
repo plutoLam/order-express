@@ -115,7 +115,7 @@
 
   .container {
     position: absolute;
-    top: 120px;
+    top: 7.5rem;
     width: 90%;
   }
 
@@ -125,15 +125,15 @@
     align-items: center;
     color: #FC7B41;
     font-weight: 500;
-    font-size: 19px;
+    font-size: 1.1875rem;
     border: none;
-    margin-bottom: -15px;
+    margin-bottom: -0.9375rem;
   }
 
   .order-status {
     width: 100%;
-    height: 150px;
-    padding: 20px;
+    height: 9.375rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     background-color: #FC7B41;
@@ -141,12 +141,12 @@
   }
 
   .order-status h2 {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     font-weight: 500;
   }
 
   .order-status p {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .border {
@@ -155,25 +155,25 @@
   }
 
   .all-count {
-    /* line-height: 30px; */
-    margin-right: 20px;
+    /* line-height: 1.875rem; */
+    margin-right: 1.25rem;
   }
 
   .order-info {
-    margin: 10px 6px;
-    font-size: 15px;
+    margin: 0.625rem 0.375rem;
+    font-size: 0.9375rem;
   }
 
   .info {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 1.125rem;
+    margin-bottom: 0.3125rem;
   }
 
   .order-info li {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 30px;
+    height: 1.875rem;
     border: none;
 
   }

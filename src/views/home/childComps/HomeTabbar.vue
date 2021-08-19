@@ -52,13 +52,13 @@
 <style scoped>
 	.home-tab {
 		width: 93%;
-		height: 2.1875rem;
+		height: 2.5875rem;
 		background-color: #393834;
 		position: fixed;
 		bottom: 0.625rem;
 		left: 50%;
 		transform: translate(-50%, 0);
-		border-radius: 1.4063rem;
+		border-radius: 2.4063rem;
 		display: flex;
 		/* overflow: hidden; */
 		color: white;
@@ -72,7 +72,7 @@
 
 	.cart {
 		width: 2.1875rem;
-		height: 2.1875rem;
+		height: 2.5875rem;
 		border-radius: 1.4063rem;
 		background-color: #2E2E2E;
 		display: flex;
@@ -81,7 +81,7 @@
 	}
 
 	.price {
-		line-height: 2.1875rem;
+		line-height: 2.5875rem;
 		padding-left: 0.5625rem;
 	}
 
@@ -92,10 +92,10 @@
 		height: 100%;
 		background-color: #FE6635;
 		text-align: center;
-		line-height: 2.1875rem;
+		line-height: 2.5875rem;
 		font-size: 0.875rem;
-		border-top-right-radius: 2.1875rem;
-		border-bottom-right-radius: 2.1875rem;
+		border-top-right-radius: 2.5875rem;
+		border-bottom-right-radius: 2.5875rem;
 	}
 
 	.cart img {

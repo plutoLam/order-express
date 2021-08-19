@@ -1,8 +1,9 @@
 <template>
 	<div class="order-list">
-		<nav-bar @back='back()'>
+		<nav-bar @back='back()' class="nav">
 			<div slot="title">订单列表</div>
 		</nav-bar>
+		<div class="place"></div>
 		<order-list-item v-for="(item, index) in orderlist" :orderItem="item" :key="index" @click.native="toOrder(item)">
 		</order-list-item>
 	</div>
@@ -30,7 +31,7 @@
 		methods: {
 			getOrderData() {
 				getOrder().then(res => {
-					console.log(res);
+					// console.log(res);
 					this.orderlist = res.data
 				})
 			},
@@ -64,6 +65,17 @@
 </script>
 
 <style scoped>
+	.nav {
+		position: absolute;
+		top: 0;
+		z-index: 2;
+	}
+
+	.place {
+		width: 100%;
+		height: 2.9rem;
+	}
+
 	.order-list {
 		/* background-color: pink; */
 		overflow-y: scroll;

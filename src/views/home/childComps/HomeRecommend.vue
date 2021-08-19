@@ -35,7 +35,7 @@
 	}
 
 	.home-recommend h5 {
-		font-size: 0.3125rem;
+		font-size: 0.9rem;
 	}
 
 	.wrap {
@@ -55,7 +55,7 @@
 	}
 
 	.recommend-item {
-		height: 180px;
+		height: 11.25rem;
 		/* width: 200px; */
 		flex: 0 0 7.5rem;
 		/* background-color: #FA9A08; */

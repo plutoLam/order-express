@@ -2,7 +2,7 @@
   <div>
     <nav-bar @back='back()'>
       <div slot="title">提交订单</div>
-      <div slot="order">
+      <div slot="order" @click="toOrderlist()">
         <a href="#" class="order">
           <img src="~assets/img/home/order.png" alt="">
         </a>
@@ -52,6 +52,9 @@
       SubmitTabbar
     },
     methods: {
+      toOrderlist() {
+        this.$router.push({ name: 'orderlist' })
+      },
       toPay() {
         // console.log('topay');
         this.$router.push({ name: 'payorder' })
@@ -85,7 +88,7 @@
   }
 
   .remark img {
-    width: 15px;
-    height: 15px;
+    width: 0.9375rem;
+    height: 0.9375rem;
   }
 </style>

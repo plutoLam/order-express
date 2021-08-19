@@ -2,7 +2,8 @@
 	<div class="home" :class="{wrap:isSearch}">
 		<home-info @search="search()" @toOrderlist="toOrderlist()"></home-info>
 		<home-recommend :recommend="recommend"></home-recommend>
-		<goods-list :category="category" :goods="goods"></goods-list>
+		<goods-list :category="category" :goods="goods" :scroll="scroll" ref="goodlist" :goodlistHeight="goodlistHeight">
+		</goods-list>
 		<home-tabbar @showCart="showCart()" @toast="toast()"></home-tabbar>
 
 		<van-overlay :show="show" @click.self="show = false" z-index="3" duration="0.1">
@@ -10,6 +11,15 @@
 		</van-overlay>
 		<home-search v-show="isSearch" :goods="goods" @onCancel="isSearch=false"></home-search>
 		<!-- <van-popup v-model:show="show">内容</van-popup> -->
+		<ul>
+			<li>123</li>
+			<li>123</li>
+			<li>123</li>
+			<li>123</li>
+			<li>123</li>
+			<li>123</li>
+			<li>123</li>
+		</ul>
 	</div>
 </template>
 
@@ -41,6 +51,8 @@
 				category: [],
 				goods: [],
 				show: false,
+				scroll: 0,
+				goodlistHeight: 0,
 			}
 		},
 		created() {
@@ -53,7 +65,43 @@
 				return this.goods.map(item => { return item.name })
 			}
 		},
+		mounted() {
+			window.addEventListener('scroll', this.menu)
+			this.goodlistHeight = this.$refs.goodlist.$el.offsetTop
+		},
 		methods: {
+			menu(e) {
+				//文档卷上去的距离
+				this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
+				if (this.scroll < this.goodlistHeight) {
+					console.log('home在上面');
+					this.$refs.goodlist.leftWarp.disable()
+					this.$refs.goodlist.rightWarp.disable()
+					// this.rightWarp.disable()
+				} else if (this.scroll >= this.goodlistHeight) {
+					console.log('home在下面');
+					// e.preventDefault();
+					this.$refs.goodlist.leftWarp.enable()
+					this.$refs.goodlist.rightWarp.enable()
+				}
+				// console.log(this.scroll);
+				//页面的高度
+				// let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+				//整个scroll的高度
+				// let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+				// console.log(this.scroll, windowHeight, scrollHeight)
+				// console.log(this.scroll)
+				// console.log(this.$refs.back)
+				// if (this.scroll > 800) {
+				// 	this.isShowBackTop = true
+				// } else {
+				// 	this.isShowBackTop = false
+				// }
+				// if ((this.scroll + windowHeight) >= scrollHeight) {
+				// 	console.log('已到达底部')
+				// 	this.getmore()
+				// }
+			},
 			toast() {
 				// console.log('Toast');
 				Toast('请选择商品')

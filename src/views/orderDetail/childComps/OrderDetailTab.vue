@@ -21,7 +21,7 @@
 <style scoped>
   .tab {
     width: 100%;
-    /* height: 50px; */
+    /* height: 3.125rem; */
     position: fixed;
     bottom: 0;
     /* left: 50%;
@@ -31,32 +31,32 @@
     justify-content: space-between;
     align-items: center;
     background: -webkit-linear-gradient(top, #eee, white);
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
   }
 
   .tab-right {
     display: flex;
     /* background-color: plum; */
-    /* padding: 10px; */
-    border-radius: 40px;
+    /* padding: 0.625rem; */
+    border-radius: 2.5rem;
     color: white;
   }
 
   .add-food,
   .pay-now {
-    padding: 10px 25px;
-    /* border-radius: 40px; */
+    padding: 0.625rem 1.5625rem;
+    /* border-radius: 2.5rem; */
   }
 
   .add-food {
     background-color: #FAB823;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
+    border-top-left-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
   }
 
   .pay-now {
     background-color: #FF6736;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-top-right-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
   }
 </style>

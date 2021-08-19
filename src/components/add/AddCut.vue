@@ -45,7 +45,7 @@
   }
 
   .num {
-    margin: 0 10px;
+    margin: 0 0.625rem;
   }
 
   .cut {

@@ -41,7 +41,10 @@
 		},
 		props: {
 			category: Array,
-			goods: Array
+			goods: Array,
+			scroll: Number,
+			goodlistHeight: Number,
+			isable: Boolean,
 		},
 		computed: {
 			currentIndex() {
@@ -58,19 +61,49 @@
 		mounted() {
 			this._initScroll();
 			this._calculateHeight();
+
+			console.log('leftWarp', this.rightWarp);
+			// this.leftWarp.options.scrollY = false
+			// this.rightWarp.options.scrollY = false
+			// this.rightWarp.disable()
 		},
 		methods: {
 			_initScroll() {
 				this.leftWarp = new Bscroll(this.$refs.leftWarp, {
 					click: true, // better-scroll 默认会阻止浏览器的原生 click 事件
+					probeType: 3
 				});
 				this.rightWarp = new Bscroll(this.$refs.rightWarp, {
 					click: true, // better-scroll 默认会阻止浏览器的原生 click 事件
 					probeType: 3
 				});
+				this.leftWarp.on('scroll', pos => {
+					console.log('leftWarp', this.leftWarp.y);
+					if (this.leftWarp.y == 0 && this.leftWarp.movingDirectionY == -1) {
+						console.log('left想上去');
+						this.leftWarp.disable()
+					}
+				});
 				this.rightWarp.on('scroll', pos => {
 					if (pos.y <= 0) {
 						this.scrollY = Math.abs(Math.round(pos.y));
+						console.log('right', this.rightWarp.y);
+
+						// console.log(this.rightWarp.movingDirectionY);
+						// if (this.scroll < this.goodlistHeight) {
+						// 	console.log('在上面');
+						// 	this.leftWarp.disable()
+						// 	this.rightWarp.disable()
+						// } else if (this.scroll >= this.goodlistHeight) {
+						// 	console.log('在下面');
+						// 	this.leftWarp.enable()
+						// 	this.rightWarp.enable()
+						// }
+						if (this.rightWarp.y == 0 && this.rightWarp.movingDirectionY == -1) {
+							console.log('righy想上去');
+							this.rightWarp.disable()
+						}
+
 					}
 				});
 			},
@@ -130,7 +163,7 @@
 		height: 3.375rem;
 		/* line-height: 3.375rem; */
 		text-align: center;
-		font-size: 13px;
+		font-size: .8125rem;
 		padding: 0 0.3125rem;
 		display: flex;
 		justify-content: center;

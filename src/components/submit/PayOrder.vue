@@ -30,7 +30,7 @@
 	import NavBar from 'components/navBar/NavBar'
 	import SubmitTabbar from './SubmitTabbar'
 	import { NoticeBar } from 'vant';
-	import { postOrder, postCartlist } from '@/network/order.js'
+	import { postOrder, postCartlist, getOrder } from '@/network/order.js'
 	import { mapState } from 'vuex'
 	import 'assets/css/cart.css'
 	// var Promise = require('promise');
@@ -44,24 +44,97 @@
 			[NoticeBar.name]: NoticeBar
 		},
 		methods: {
-			operation() {
+			// postOrderData(order) {
+			// 	return new Promise((resolve, reject) => {
+			// 		postOrder(order).then(res => {
+			// 			// console.log('res', res);
+			// 			resolve(res.data)
+			// 		})
+			// 	})
+			// },
+			// postCartData(cartlist, order) {
+			// 	return new Promise((resolve, reject) => {
+			// 		cartlist.forEach(item => {
+			// 			postCartlist(item, order.orderNum).then(res => {
+			// 				console.log('for', res);
+			// 				resolve();
+			// 			})
+			// 		});
 
+			// 	})
+			// },
+
+
+			operation1() {
 				//提交菜单给后端
 				//假定已支付成功
+				function fun(order) {
+					return new Promise((resolve, reject) => {
+						postOrder(order).then(res => {
+							console.log('res', res);
+							resolve()
+						})
+					})
+				}
+				function fun2(cartlist, order) {
+					return new Promise((resolve, reject) => {
+						return new Promise((resolve, reject) => {
+							cartlist.forEach(item => {
+								postCartlist(item, order.orderNum).then(res => {
+									console.log('for', res);
 
+								})
+							});
+							resolve();
+						})
+					})
+				}
+				function postOrderData(order) {
+					return new Promise((resolve, reject) => {
+						postOrder(order).then(res => {
+							// console.log('res', res);
+							resolve()
+						})
+					})
+				}
+				function postCartData(cartlist, order) {
+					return new Promise((resolve, reject) => {
+						cartlist.forEach(item => {
+							postCartlist(item, order.orderNum).then(res => {
+								console.log('for', res);
+
+							})
+						});
+						resolve();
+					})
+				}
+				Promise.all([postOrderData(this.order), postCartData(this.cartlist, this.order)]).then(res => {
+					console.log('over');
+				})
 				this.$store.commit('deleteAll') //清空购物车
 			},
-			back() {
+			operation() {
+				return Promise.all([...this.cartlist.map(item => {
+					return postCartlist(item, this.order.orderNum)
+				}),
+				postOrder(this.order)
+				])
+					.then((res) => {
+						this.$store.commit('deleteAll') //清空购物车
+					})
+			},
+			async back() {
 				this.$store.commit('over', false)
-				console.log('back', this.order);
-				Promise.all([this.postOrderData()]).then(() => {
-					console.log('我是created中的事件，现在两个接口都执行完毕啦')
-				})
+				// console.log('back', this.order);
+
+				this.operation()
+
 				this.$router.push({ name: 'home' })
 			},
-			pay() {
+			async pay() {
 				this.$store.commit('over', true)
 				this.operation()
+				// console.log(res);
 				this.$router.push({ name: 'orderlist' })
 				//此处打开微信支付
 				// let obj = {
@@ -72,25 +145,7 @@
 				// }
 				// console.log('obj', obj);	
 			},
-			postOrderData() {
-				return new Proimse((resolve, reject) => {
-					postOrder(this.order).then(res => {
-						console.log('res', res);
-						resolve()
-					})
-				})
-			},
-			postCartData() {
-				return new Promise((resolve, reject) => {
-					// this.cartlist.forEach(item => {
-					// 	postCartlist(item, this.order.orderNum).then(res => {
-					// 		console.log('for', res);
 
-					// 	})
-					// });
-					resolve();
-				})
-			}
 		},
 		computed: {
 			...mapState(['order', 'cartlist'])

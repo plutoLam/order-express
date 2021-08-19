@@ -53,7 +53,7 @@
 	}
 
 	h3 {
-		font-size: 0.0625rem;
+		font-size: 0.9rem;
 		margin-top: 0.29rem;
 		margin-left: 0.375rem;
 	}

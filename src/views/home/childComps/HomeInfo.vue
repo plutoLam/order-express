@@ -100,7 +100,7 @@
 	}
 
 	.more {
-		font-size: 0.0625rem;
+		font-size: 0.9rem;
 		display: flex;
 		justify-content: space-between;
 		margin-top: 0.3125rem;
