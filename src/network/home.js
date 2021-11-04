@@ -1,19 +1,19 @@
-import {request} from './request.js'
+import { request } from './request.js'
 
-export function getRecommend(){
+export function getRecommend() {
 	return request({
-		url:'/order/api/recommend'
+		url: '/order/recommend'
 	});
 }
 
-export function getGoods(){
+export function getGoods() {
 	return request({
-		url:'/order/api/goods'
+		url: '/order/goods'
 	});
 }
 
-export function getCategory(){
+export function getCategory() {
 	return request({
-		url:'/order/api/category'
+		url: '/order/category'
 	});
 }

@@ -1,0 +1,9 @@
+-- CREATE TABLE order_cartlist (
+--     id       INTEGER         NOT NULL
+--                              PRIMARY KEY AUTOINCREMENT,
+--     name     VARCHAR ('200') NOT NULL,
+--     image    VARCHAR ('200') NOT NULL,
+--     price    REAL            NOT NULL,
+--     count    INTEGER         NOT NULL,
+--     orderNum VARCHAR ('200') NOT NULL
+-- );

@@ -1,0 +1,60 @@
+[
+   {
+       "id": 1,
+       "name": "招牌凤爪",
+       "price": 58.0,
+       "image": "/images/goods/fengzhua.jpg"
+   },
+   {
+       "id": 2,
+       "name": "花甲",
+       "price": 22.0,
+       "image": "/images/goods/huajia.jpg"
+   },
+   {
+       "id": 3,
+       "name": "毛豆",
+       "price": 20.0,
+       "image": "/images/goods/maodou.jpg"
+   },
+   {
+      "id": 4,
+      "name": "纸巾",
+      "image": "/images/goods/zhijin.jpg",
+      "price": 1.0,
+      "unit": "/包",
+      "category": 1
+  },
+  {
+      "id": 5,
+      "name": "虾球捞面",
+      "image": "/images/goods/laomian.jpg",
+      "price": 68.0,
+      "unit": "",
+      "category": 2
+  },
+  {
+      "id": 6,
+      "name": "麻辣香锅",
+      "image": "",
+      "price": 13.0,
+      "unit": "",
+      "category": 2
+  },
+  {
+      "id": 7,
+      "name": "大白菜",
+      "image": "",
+      "price": 23.0,
+      "unit": "/碟",
+      "category": 5
+  },
+  {
+      "id": 8,
+      "name": "黄金哒哒面",
+      "image": "",
+      "price": 233.0,
+      "unit": "/盆",
+      "category": 2
+  }
+]
